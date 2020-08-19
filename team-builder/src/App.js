@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 
-const App = () => {
+function App() {
 const myTeam = [{"name": "Nelson S", "e-mail":"nelson@nelson.com", "role": "student"}]
 
 const [teamList, setTeamList] = useState(myTeam);
@@ -11,8 +11,14 @@ const [teamList, setTeamList] = useState(myTeam);
 
 console.log(myTeam)
 console.log(teamList)
+const handleChange = event => {
+  setTeamList(event.target.value);
+}
 
-
+const submitForm = () => {
+  
+} 
+const [name, setName] = useState("");
 
 
   return (
@@ -22,11 +28,12 @@ console.log(teamList)
       <form>
         <label>
           Username:
-          <input type="text" />
+          <input type="text" onChange= {event => handleChange(event)} />
         </label>
       </form>
     </div>
   );
-  }
+} 
+  
 
 export default App;
