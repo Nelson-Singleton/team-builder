@@ -2,44 +2,48 @@ import React, { useState } from 'react';
 import './App.css';
 
 function App() {
-const myTeam = []
-// {name: "Nelson S", email:"nelson@nelson.com", role: "student"}
-//step 1
+const myTeam = [{name: "Nelson S", email:"nelson@nelson.com", role: "student"}]
+
 
 const [teamList, setTeamList] = useState(myTeam);
+
+//step 1
+const defaultForm = {
+  name: '',
+  email: '',
+  role: '',
+}
+
+const [formValues, setFormValues] = useState(defaultForm)
+
 // const changeTeam = event => {
 //   setTeamList(event.target.value);
 // };
 
 //step 2
 
-const handleChange = event => {
-  setTeamList(event.target.value);
-}
+
 
 const nameToState = event => {
-  setTeamList({ ...teamList, name: event.target.value });
+  setFormValues({ ...formValues, name: event.target.value });
 };
 
 const emailToState = event => {
-  setTeamList({ ...teamList, email: event.target.value });
+  setFormValues({ ...formValues, email: event.target.value });
 };
 
 const roleToState = event => {
-  setTeamList({ ...teamList, role: event.target.value });
+  setFormValues({ ...formValues, role: event.target.value });
 };
 
 const submitForm = event => {
   event.preventDefault();
   const newMember = {
-    name: teamList.name,
-    email: teamList.email,
-    role: teamList.role, 
-
-    
+    name: formValues.name,
+    email: formValues.email,
+    role: formValues.role,    
   }
   setTeamList([...teamList, newMember])
-
 } 
 
 // const [name, setName] = useState("");
@@ -59,7 +63,7 @@ console.log(teamList)
     <div className="App">
       <form onSubmit = {event => submitForm(event)}>
         <label>
-          Username:
+          Name:
           <input type="text" name="name" onChange= {event => nameToState(event)} />
         </label>
         <br></br>
