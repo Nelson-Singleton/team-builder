@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
+import Team from './Team';
+import Form from './Form';
 import './App.css';
 
+
 function App() {
-const myTeam = [{name: "Nelson S", email:"nelson@nelson.com", role: "student"}]
-
-
+const myTeam = [{name: "Nelson S", email:"nelson@nelson.com", role: "student", id: Math.random()}]
 const [teamList, setTeamList] = useState(myTeam);
 
-//step 1
+//can use null instead
 const defaultForm = {
   name: '',
   email: '',
@@ -16,14 +17,19 @@ const defaultForm = {
 
 const [formValues, setFormValues] = useState(defaultForm)
 
-// const changeTeam = event => {
-//   setTeamList(event.target.value);
-// };
+//submit function
+const submitForm = event => {
+  event.preventDefault();
+  const newMember = {
+    
+    name: formValues.name,
+    email: formValues.email,
+    role: formValues.role,    
+  }
+  setTeamList([...teamList, newMember])
+}
 
-//step 2
-
-
-
+//event functions
 const nameToState = event => {
   setFormValues({ ...formValues, name: event.target.value });
 };
@@ -36,26 +42,13 @@ const roleToState = event => {
   setFormValues({ ...formValues, role: event.target.value });
 };
 
-const submitForm = event => {
-  event.preventDefault();
-  const newMember = {
-    name: formValues.name,
-    email: formValues.email,
-    role: formValues.role,    
-  }
-  setTeamList([...teamList, newMember])
-} 
-
-// const [name, setName] = useState("");
-
-console.log(myTeam)
-console.log(teamList)
-
-
-
-
-
-
+//Used for dropdown
+// const onChange = evt => {
+ 
+//   const { name, value } = evt.target
+  
+//   update(name, value)
+// }
 
   return (
 
@@ -75,13 +68,31 @@ console.log(teamList)
         <label>
           Role:
           <input type="text" name="role" onChange= {event => roleToState(event)} />
-        </label>
+
+        </label> 
+
+        
+
+        {/* Dropdown */}
+        {/* <label>Role:&nbsp;
+          
+          <select onChange={onChange} value={formValues.role} name="role">
+            <option value="">-- Select a Role --</option>
+            <option value="frontend">Front-End Dev</option>
+            <option value="backend">Back-End Dev</option>
+            <option value="ui">UI Designer</option>
+          </select>
+        </label> */}
+
+        
         <br></br> <br></br>
         <button > Submit </button>
       </form>
+      <br></br> <br></br>
       <h1>My Team</h1>
+      <br></br> <br></br>
         <h2>
-          
+          <Team teamInfo = {teamList}/>
         </h2>
     </div>
     
