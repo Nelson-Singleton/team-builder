@@ -2,12 +2,16 @@ import React, { useState } from 'react';
 import './App.css';
 
 function App() {
-const myTeam = [{"name": "Nelson S", "email":"nelson@nelson.com", "role": "student"}]
+const myTeam = []
+// {name: "Nelson S", email:"nelson@nelson.com", role: "student"}
+//step 1
 
 const [teamList, setTeamList] = useState(myTeam);
 // const changeTeam = event => {
 //   setTeamList(event.target.value);
 // };
+
+//step 2
 
 const handleChange = event => {
   setTeamList(event.target.value);
@@ -27,7 +31,14 @@ const roleToState = event => {
 
 const submitForm = event => {
   event.preventDefault();
-  
+  const newMember = {
+    name: teamList.name,
+    email: teamList.email,
+    role: teamList.role, 
+
+    
+  }
+  setTeamList([...teamList, newMember])
 
 } 
 
@@ -64,7 +75,12 @@ console.log(teamList)
         <br></br> <br></br>
         <button > Submit </button>
       </form>
+      <h1>My Team</h1>
+        <h2>
+          
+        </h2>
     </div>
+    
   );
 } 
   
