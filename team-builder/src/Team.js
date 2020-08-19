@@ -15,10 +15,7 @@ const Team = props => {
            <h4>Role: {someMember.role}</h4> 
            </div>
         )
-            )}
-      
-      
-      
+            )}      
     </div>
   )
 }

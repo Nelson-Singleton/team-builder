@@ -74,15 +74,14 @@ const roleToState = event => {
         
 
         {/* Dropdown */}
-        {/* <label>Role:&nbsp;
-          
-          <select onChange={onChange} value={formValues.role} name="role">
-            <option value="">-- Select a Role --</option>
-            <option value="frontend">Front-End Dev</option>
-            <option value="backend">Back-End Dev</option>
-            <option value="ui">UI Designer</option>
-          </select>
-        </label> */}
+        {/* <form>
+           <select id="role" name="role">
+            <option value="Front-End Developer">
+            <option value="Back-End Developer">
+            <option value="UI Designer">
+            <option value="Team Leader">
+           </select>
+          </form> */}
 
         
         <br></br> <br></br>
